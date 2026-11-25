@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>b-shirt — Fashion Pria &amp; Wanita | Katalog Resmi</title>
+  <meta name="description" content="Katalog online b-shirt: New Arrivals, koleksi wanita dan pria, harga promo. Pembelian melalui Shop | Tokopedia, bantuan via WhatsApp Admin.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="b-shirt — Fashion Pria &amp; Wanita">
+  <meta property="og:description" content="Lihat koleksi baru dan harga promo b-shirt, lalu beli melalui Shop | Tokopedia.">
+  <!-- og:image must be an absolute URL on the live domain: replace PATH with the deployed site, e.g. https://example.com/assets/products/ce-01-720.webp -->
+  <meta property="og:image" content="assets/products/ce-01-720.webp">
+  <meta name="theme-color" content="#111111">
+  <!-- Interim favicon: generic hanger glyph. Replace with the official logo file when supplied. -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111111'/%3E%3Cpath d='M32 14a6 6 0 0 0-6 6h4a2 2 0 1 1 2 2 2 2 0 0 0-2 2v4L12 40a3 3 0 0 0 2 5h36a3 3 0 0 0 2-5L34 28v-2.3A6 6 0 0 0 32 14zm0 17 15 10H17z' fill='%23fff'/%3E%3C/svg%3E">
+  <!-- System editorial display + sans-serif typography preserves instant first paint without webfont download or relayout cost. -->
+  <!-- build:preloads -->
+  <link rel="preload" href="catalog.json" as="fetch" crossorigin="anonymous">
+  <link rel="modulepreload" href="js/lib/status.js">
+  <link rel="modulepreload" href="js/lib/links.js">
+  <link rel="modulepreload" href="js/lib/catalog.js">
+  <link rel="modulepreload" href="js/lib/track.js">
+  <!-- /build:preloads -->
+  <!-- build:css -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- /build:css -->
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#new-arrivals">Langsung ke produk</a>
+
+  <div class="promo" data-promo-bar>
+    <p class="container promo__inner" data-promo></p>
+  </div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="#top" aria-label="b-shirt, ke atas halaman">b-shirt</a>
+      <nav class="nav" aria-label="Belanja">
+        <a class="nav__link" href="#area-cewek">Wanita</a>
+        <a class="nav__link" href="#area-cowok">Pria</a>
+        <a class="nav__link" href="#new-arrivals">New Arrivals</a>
+        <a class="nav__link" href="#info-belanja">Bantuan</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Immersive hero (v4). Headline, promo and CTA are semantic DOM. The 3D rack (one canvas) fades in
+         over the campaign photo pair after the visitor engages; without WebGL the poster stays and the
+         same controls work in 2D. -->
+    <section class="hero" aria-labelledby="campaign-title" data-orbit>
+      <div class="container hero__inner">
+        <div class="hero__copy" data-campaign-copy></div>
+        <div class="hero__stage">
+          <div class="stage__visual" data-scene data-scene-state="poster">
+            <div class="poster" data-campaign-poster></div>
+            <img class="stage__photo" data-orbit-photo alt="" width="600" height="800" decoding="async" hidden>
+            <canvas class="stage__canvas" aria-hidden="true"></canvas>
+            <p class="stage__hint" aria-hidden="true">Geser rak · ketuk foto</p>
+            <button class="stage__motion" type="button" data-scene-toggle aria-pressed="false" hidden>Jeda animasi</button>
+          </div>
+          <div class="stage__panel">
+            <div class="stage__bar">
+              <h2 class="stage__title" id="stage-title">Putar rak koleksi</h2>
+              <div class="pick__nav">
+                <button class="pick__step" type="button" data-orbit-prev aria-label="Produk sebelumnya"><span aria-hidden="true">←</span></button>
+                <button class="pick__step" type="button" data-orbit-next aria-label="Produk berikutnya"><span aria-hidden="true">→</span></button>
+              </div>
+            </div>
+            <div class="chips" role="group" aria-label="Tampilkan koleksi di rak" data-orbit-chips></div>
+            <div class="pick" data-orbit-panel></div>
+            <p class="sr-only" aria-live="polite" data-orbit-live></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories" aria-label="Belanja berdasarkan kategori">
+      <div class="container">
+        <ul class="tiles" role="list" data-categories></ul>
+      </div>
+    </section>
+
+    <p class="container config-warning" data-config-warning hidden></p>
+
+    <section class="section" id="new-arrivals" aria-labelledby="new-arrivals-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" id="new-arrivals-title">New Arrivals</h2>
+          <p class="section__count" data-count="new"></p>
+        </div>
+        <ul class="grid" role="list" data-grid="new"></ul>
+      </div>
+    </section>
+
+    <section class="ambassadors" id="brand-ambassador" aria-labelledby="amb-title" data-ambassadors-section>
+      <div class="container">
+        <div class="ambassadors__head">
+          <p class="ambassadors__eyebrow" data-amb-eyebrow>Brand Ambassador</p>
+          <h2 class="ambassadors__title" id="amb-title" data-amb-title>Wajah b-shirt</h2>
+          <p class="ambassadors__text" data-amb-text>Gaya keseharian yang mewakili karakter b-shirt.</p>
+        </div>
+        <ul class="amb-grid" role="list" data-ambassadors></ul>
+      </div>
+    </section>
+
+    <section class="section" id="area-cewek" aria-labelledby="area-cewek-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" id="area-cewek-title">Wanita</h2>
+          <p class="section__count" data-count="cewek"></p>
+        </div>
+        <ul class="grid" role="list" data-grid="cewek"></ul>
+      </div>
+    </section>
+
+    <section class="section" id="area-cowok" aria-labelledby="area-cowok-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" id="area-cowok-title">Pria</h2>
+          <p class="section__count" data-count="cowok"></p>
+        </div>
+        <ul class="grid" role="list" data-grid="cowok"></ul>
+      </div>
+    </section>
+
+    <section class="service" id="info-belanja" aria-labelledby="service-title">
+      <div class="container">
+        <h2 class="service__title" id="service-title">Info Belanja</h2>
+        <dl class="service__list">
+          <div class="service__item"><dt>Toko online</dt><dd>b-shirt adalah toko online, tanpa toko fisik.</dd></div>
+          <div class="service__item"><dt>Pembelian</dt><dd data-shop-info>Transaksi dilanjutkan di Shop | Tokopedia.</dd></div>
+          <div class="service__item"><dt>Bantuan</dt><dd>Tanya produk ke Admin via WhatsApp <a data-wa-link data-wa-location="info" data-wa-display href="#"></a>.</dd></div>
+          <div class="service__item">
+            <dt>Jam admin</dt>
+            <dd><span data-hours-label></span><br><span class="status" role="status" data-status><span class="status__icon" aria-hidden="true"></span><span data-status-text>Memeriksa jam admin…</span></span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <p class="brand brand--footer">b-shirt</p>
+        <p class="footer__text">Katalog resmi b-shirt. Toko online; pembelian melalui Shop | Tokopedia.</p>
+      </div>
+      <div>
+        <h2 class="footer__heading">Belanja</h2>
+        <ul class="footer__links">
+          <li><a href="#area-cewek">Wanita</a></li>
+          <li><a href="#area-cowok">Pria</a></li>
+          <li><a href="#new-arrivals">New Arrivals</a></li>
+          <li data-shop-footer></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer__heading">Bantuan</h2>
+        <ul class="footer__links">
+          <li><a data-wa-link data-wa-location="footer" href="#" target="_blank" rel="noopener noreferrer"><span>WhatsApp&nbsp;<span data-wa-display></span></span></a></li>
+          <li><a data-tiktok-link href="#" target="_blank" rel="noopener noreferrer">TikTok @b_shirt_co</a></li>
+        </ul>
+        <p class="footer__text"><span data-hours-label></span> · Minggu tutup</p>
+      </div>
+    </div>
+    <p class="container footer__copy">© <span data-year></span> b-shirt</p>
+  </footer>
+
+  <dialog class="pmodal" id="product-modal" aria-labelledby="pmodal-title"></dialog>
+
+  <a class="wa-fab" data-wa-link data-wa-location="fab" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat Admin b-shirt via WhatsApp">
+    <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1 .1-1.2l-.4-.2z"/></svg>
+    <span class="wa-fab__label">Chat Admin</span>
+  </a>
+
+  <noscript><p class="container">Aktifkan JavaScript untuk status admin dan tautan lengkap, atau hubungi Admin via WhatsApp 082230089520.</p></noscript>
+</body>
+</html>

@@ -1,0 +1,105 @@
+:root {
+  /* Core Quiet Architectural Luxury Palette */
+  --color-bg: #f4efe8;
+  --color-surface: #fbf8f3;
+  --color-surface-2: #ede6dc;
+  --color-surface-card: #ffffff;
+  --color-ink: #1a1816;
+  --color-ink-2: #4f4a43;
+  --color-muted: #686058;
+  --color-accent: #954530;
+  --color-accent-ink: #ffffff;
+  --color-sale: #9c3d2a;
+  --color-line: #dfd6ca;
+  --color-line-strong: rgba(26, 24, 22, 0.14);
+  --color-line-subtle: rgba(26, 24, 22, 0.08);
+  --color-img-bg: #e7dfd4;
+
+  /* Promo, Warning & Channel Status */
+  --color-promo-bg: #181614;
+  --color-promo-ink: #faf7f2;
+  --color-promo-dot: #c89b6e;
+  --color-wa: #166534;
+  --color-wa-hover: #14532d;
+  --color-wa-ink: #ffffff;
+  --color-wa-surface: rgba(22, 101, 52, 0.08);
+  --status-open-bg: rgba(22, 101, 52, 0.10);
+  --status-open-ink: #14532d;
+  --status-open-dot: #16a34a;
+  --status-closed-bg: rgba(156, 61, 42, 0.09);
+  --status-closed-ink: #7f2b1a;
+  --status-closed-dot: #b8664e;
+  --warn-bg: rgba(184, 102, 78, 0.12);
+  --warn-ink: #7f2b1a;
+  --warn-border: rgba(184, 102, 78, 0.30);
+
+  /* Frosted Surface Pill & Segmented Tabs (controlled contrast, no heavy blur stack) */
+  --glass-bg: rgba(251, 248, 243, 0.88);
+  --glass-bg-strong: rgba(251, 248, 243, 0.96);
+  --glass-border: rgba(26, 24, 22, 0.11);
+  --glass-specular: rgba(255, 255, 255, 0.88);
+  --glass-shadow: 0 8px 20px rgba(26, 24, 22, 0.08), 0 2px 5px rgba(26, 24, 22, 0.04);
+  --glass-active-bg: rgba(26, 24, 22, 0.07);
+  --chip-bg: rgba(255, 255, 255, 0.72);
+  --chip-pill-bg: #1a1816;
+  --chip-pill-ink: #faf7f2;
+
+  /* Dark Editorial Runway / Ambassador Showcase */
+  --dark-surface: #151412;
+  --dark-surface-2: #1f1d1a;
+  --dark-ink: #faf7f2;
+  --dark-ink-muted: #c8c0b6;
+  --dark-border: rgba(255, 255, 255, 0.14);
+  --dark-border-strong: rgba(255, 255, 255, 0.30);
+  --dark-rank: rgba(255, 255, 255, 0.22);
+  --dark-rank-hover: rgba(200, 155, 110, 0.74);
+
+  /* 3D Atelier Stage & WebGL1 Tokens */
+  --scene-line: #1f1d1a;
+  --scene-card-back: #dcd1c3;
+  --scene-fabric: #c9b8a3;
+  --scene-fabric-women: #a87464;
+  --scene-fabric-men: #5a6e76;
+  --scene-metal-rim: #c89b6e;
+  --stage-bg: linear-gradient(145deg, #f8f2ea 0%, #ede4d7 58%, #e4d7c7 100%);
+  --stage-bevel: rgba(255, 255, 255, 0.80);
+  --stage-shadow: 0 14px 30px rgba(26, 24, 22, 0.10), 0 4px 10px rgba(26, 24, 22, 0.05);
+  --poster-shadow: 0 10px 22px rgba(26, 24, 22, 0.12);
+  --overlay-glass-bg: rgba(26, 24, 22, 0.80);
+  --overlay-glass-ink: #faf7f2;
+  --overlay-glass-border: rgba(255, 255, 255, 0.22);
+
+  /* 3D Tilt, Glare, Spotlight & Elevation (controlled architectural shadows) */
+  --spotlight-radial: radial-gradient(360px circle at var(--sp-x, 50%) var(--sp-y, 50%), rgba(200, 155, 110, 0.17), transparent 68%);
+  --tilt-glare-grad: radial-gradient(circle at var(--tc-gx, 50%) var(--tc-gy, 35%), rgba(255, 255, 255, 0.46), rgba(255, 255, 255, 0.10) 42%, transparent 72%);
+  --shadow-card: 0 2px 10px rgba(26, 24, 22, 0.05);
+  --shadow-card-hover: 0 14px 28px rgba(26, 24, 22, 0.10), 0 4px 10px rgba(26, 24, 22, 0.05);
+  --shadow-btn: 0 6px 16px rgba(26, 24, 22, 0.14);
+  --cta-sheen: linear-gradient(110deg, transparent 25%, rgba(255, 255, 255, 0.24) 48%, transparent 72%);
+  --scrim-tile: linear-gradient(180deg, transparent 58%, rgba(16, 14, 12, 0.78) 100%);
+  --badge-new-bg: #1a1816;
+  --badge-new-ink: #faf7f2;
+  --badge-sale-bg: #9c3d2a;
+  --badge-sale-ink: #ffffff;
+  --focus-ring: 0 0 0 3px rgba(184, 102, 78, 0.45);
+  --panel-surface: rgba(251, 248, 243, 0.88);
+  --scrim-poster-cap: rgba(251, 248, 243, 0.88);
+  --modal-backdrop: rgba(21, 20, 18, 0.64);
+  --active-card-ring: rgba(184, 102, 78, 0.65);
+  --detail-bg: rgba(26, 24, 22, 0.05);
+  --detail-hover: rgba(26, 24, 22, 0.11);
+  --save-bg: rgba(22, 101, 52, 0.11);
+  --save-ink: #14532d;
+
+  /* Typography, Radii & Spring Easing */
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --container-max: 1240px;
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-hero: 36px;
+  --radius-pill: 9999px;
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+}

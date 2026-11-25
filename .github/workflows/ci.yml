@@ -1,0 +1,51 @@
+name: Gembul Web Quality Gate
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dev dependencies cleanly
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run unit & integration tests
+        run: npm test
+
+      - name: Build production bundle & validate catalog/assets
+        run: npm run build
+
+      - name: Verify production bundle integrity
+        run: node --input-type=module -e "import { existsSync, readFileSync } from 'node:fs'; for (const f of ['dist/index.html','dist/catalog.json','dist/js/app.js','dist/js/stage.js','dist/js/3d/orbit-scene.js','dist/js/ui/product-modal.js']) { if (!existsSync(f)) throw new Error('Missing ' + f); } const html = readFileSync('dist/index.html','utf8'); if (!html.includes('data-prerendered') || !html.includes('id=\"product-modal\"')) throw new Error('Invalid dist/index.html'); console.log('dist bundle OK:', html.length, 'bytes');"
+
+      - name: Run Playwright E2E & WCAG Axe Accessibility suite
+        run: npm run test:e2e
+
+      - name: Upload QA & test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gembul-qa-reports
+          path: |
+            docs/reports/
+            site/test-results/

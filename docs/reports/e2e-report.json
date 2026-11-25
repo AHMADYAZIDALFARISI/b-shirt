@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-11-25T06:57:46.830Z",
+  "results": [
+    {
+      "test": "Landing page catalog & section integrity",
+      "status": "PASS",
+      "details": "Gaya harian untuk pria dan wanita (4 new / 7 women / 8 men / 4 amb)"
+    },
+    {
+      "test": "WebGL 3D rack lazy-loads on user engagement",
+      "status": "PASS",
+      "details": "sceneState === live"
+    },
+    {
+      "test": "Category filtering updates rack, count, panel, and buy URL",
+      "status": "PASS",
+      "details": "Korean Camel Oversized Coat & Turtleneck Look (1 / 8)"
+    },
+    {
+      "test": "Product selector next button & ArrowLeft keyboard sync",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Product Detail Modal opens, binds Tokopedia/WA links, scans a11y & restores focus",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "WCAG 2.2 AA Axe scan (page + dialog)",
+      "status": "PASS",
+      "details": "0 page violations, 0 modal violations"
+    },
+    {
+      "test": "Motion toggle & tracking event emission without console errors",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Mobile 360x800: 0 overflow, 0 FAB overlap, 2x2 editorial, focusable WA",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Mobile 390x844: 0 overflow, 0 FAB overlap, 2x2 editorial, focusable WA",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Mobile 430x932: 0 overflow, 0 FAB overlap, 2x2 editorial, focusable WA",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Reduced motion runs still-frame mode cleanly",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Poster fallback preserves full 2D catalog & purchasing without WebGL",
+      "status": "PASS",
+      "details": ""
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+node_modules/
+site/node_modules/
+site/dist/
+site/test-results/
+.vercel/
+site/.vercel/
+playwright-report/
+test-results/
+*.log
+
+# Heavy historical QA artifacts & screenshots
+docs/upgrade-v3/screenshots/
+docs/upgrade-v4/screenshots/
+docs/upgrade-v4/lighthouse/
+docs/upgrade-v5/screenshots/
+
+# Raw unoptimized photo intake, scratch & duplicate drafts
+Baju Cewek/
+Baju Cowok/
+Model Cewek/
+Model Cowok/
+brand-source/
+product-intake/
+audit/
+DESIGN (2).md

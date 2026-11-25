@@ -1,0 +1,154 @@
+{
+  "site_config": {
+    "brand_name": "b-shirt",
+    "site_url": null,
+    "logo_path": null,
+    "global_shop_url": "https://shop-id.tokopedia.com/view/product/1738719949914146085?encode_params=MIIBPwQMVRjyj0VLvm4f044-BIIBGw11YrlluB3RqJtuWA9PhVMnv5WvnmodUvqjJNeumWwMEFcT7o_5U8N0cWa_cndbg71YCQL5BFUaaP2u6QGMMvXU6AAVkACoZgWd9mP63KwGLQhkO73SodWMOIDGrqcgYB0aUlby8eNJ4SzYhTBWZqTu07tEg-AAx5WGtA4bUfiW5P8p3vf0slHOhAet8VTw946E-KulTj9S7IYoZcoHUp3MSdLkVhQ02oZO3im4hHaiiaTrniU_8n3pZ-BHQVRNRGrSzP-e2PtEK3nlLTEu17aTmrzd_-hYVulD7pIowMBiFsWvd-Q1W7I3yp_UUVC5jQ9haBH5whd7di-PrrgRQGP2cYNlwke55KnyFJTL8fptUz-4Tev7efdxShEEEIGP1O1LWB1tPHQhenUaU4o%3D",
+    "whatsapp": {
+      "display": "082230089520",
+      "number": "6282230089520",
+      "default_message": "Halo Admin b-shirt, saya ingin bertanya mengenai produk di katalog web."
+    },
+    "tiktok_url": "https://www.tiktok.com/@b_shirt_co",
+    "operating_hours": {
+      "label": "Senin–Sabtu, 08.00–17.00 WIB",
+      "timezone": "Asia/Jakarta",
+      "days_open": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "open_hour": 8,
+      "close_hour": 17
+    },
+    "promo_banner": {
+      "active": true,
+      "event_label": "12.12 SALE",
+      "text": "PROMO TANGGAL KEMBAR: Diskon hingga 30% untuk Koleksi Baru!"
+    },
+    "campaign": {
+      "active": true,
+      "eyebrow": "Koleksi Baru",
+      "title": "Gaya harian untuk pria dan wanita",
+      "text": "Diskon hingga {max_new_discount}% untuk New Arrivals.",
+      "cta_label": "Lihat New Arrivals",
+      "cta_target": "#new-arrivals",
+      "product_ids": [
+        "cw-01",
+        "ce-01"
+      ]
+    },
+    "stage": {
+      "active": true,
+      "title": "Putar rak koleksi",
+      "text": "Geser rak 3D atau pakai tombol untuk memilih produk, lalu beli di Tokopedia.",
+      "default_product": "ce-01"
+    },
+    "category_tiles": [
+      {
+        "gender": "cewek",
+        "label": "Wanita",
+        "target": "#area-cewek",
+        "product_id": "ce-05"
+      },
+      {
+        "gender": "cowok",
+        "label": "Pria",
+        "target": "#area-cowok",
+        "product_id": "cw-08"
+      }
+    ],
+    "ambassadors": {
+      "active": true,
+      "eyebrow": "Brand Ambassador",
+      "title": "Wajah b-shirt",
+      "text": "Gaya keseharian yang mewakili karakter b-shirt.",
+      "people": [
+        {
+          "id": "amb-cw-01",
+          "collection": "cowok",
+          "image_sources": [
+            {
+              "src": "assets/ambassadors/amb-cw-01-400.webp",
+              "w": 400
+            },
+            {
+              "src": "assets/ambassadors/amb-cw-01-720.webp",
+              "w": 720
+            }
+          ],
+          "image_position": "top",
+          "published": true
+        },
+        {
+          "id": "amb-ce-01",
+          "collection": "cewek",
+          "image_sources": [
+            {
+              "src": "assets/ambassadors/amb-ce-01-400.webp",
+              "w": 400
+            },
+            {
+              "src": "assets/ambassadors/amb-ce-01-720.webp",
+              "w": 720
+            }
+          ],
+          "image_position": "top",
+          "published": true
+        },
+        {
+          "id": "amb-cw-02",
+          "collection": "cowok",
+          "image_sources": [
+            {
+              "src": "assets/ambassadors/amb-cw-02-400.webp",
+              "w": 400
+            },
+            {
+              "src": "assets/ambassadors/amb-cw-02-720.webp",
+              "w": 720
+            }
+          ],
+          "image_position": "top",
+          "published": true
+        },
+        {
+          "id": "amb-ce-02",
+          "collection": "cewek",
+          "image_sources": [
+            {
+              "src": "assets/ambassadors/amb-ce-02-400.webp",
+              "w": 400
+            },
+            {
+              "src": "assets/ambassadors/amb-ce-02-720.webp",
+              "w": 720
+            }
+          ],
+          "image_position": "top",
+          "published": true
+        }
+      ]
+    }
+  },
+  "products": [
+    {"id":"cw-01","name":"Korean Camel Oversized Coat & Turtleneck Look","gender":"cowok","is_new":true,"is_featured":false,"original_price":349000,"promo_price":249000,"image":"assets/products/cw-01-400.webp","image_position":"top","product_url":null,"image_is_illustration":false,"image_sources":[{"src":"assets/products/cw-01-400.webp","w":400},{"src":"assets/products/cw-01-720.webp","w":720}]},
+    {"id":"cw-02","name":"Basic White Tee & Light-Wash Baggy Jeans","gender":"cowok","is_new":true,"is_featured":false,"original_price":229000,"promo_price":169000,"image":"assets/products/cw-02-400.webp","image_position":"center","product_url":null,"image_is_illustration":false,"image_sources":[{"src":"assets/products/cw-02-400.webp","w":400},{"src":"assets/products/cw-02-720.webp","w":720}]},
+    {"id":"ce-01","name":"Earth-Tone Knit Vest & Pleated Culotte Set","gender":"cewek","is_new":true,"is_featured":true,"original_price":269000,"promo_price":189000,"image":"assets/products/ce-01-400.webp","image_position":"top","product_url":null,"image_is_illustration":false,"image_sources":[{"src":"assets/products/ce-01-400.webp","w":400},{"src":"assets/products/ce-01-720.webp","w":720}]},
+    {"id":"ce-02","name":"Sky Blue Lace-Trim Wide Leg Trousers","gender":"cewek","is_new":true,"is_featured":false,"original_price":179000,"promo_price":129000,"image":"assets/products/ce-02-400.webp","image_position":"center","product_url":null,"image_is_illustration":false,"image_sources":[{"src":"assets/products/ce-02-400.webp","w":400},{"src":"assets/products/ce-02-720.webp","w":612}]},
+    {"id":"ce-03","name":"Ivory High-Waist Corduroy Wide Pants","gender":"cewek","is_new":false,"is_featured":false,"original_price":189000,"promo_price":139000,"image":"assets/products/ce-03-400.webp","image_position":"center","product_url":null,"image_is_illustration":false,"image_sources":[{"src":"assets/products/ce-03-400.webp","w":400},{"src":"assets/products/ce-03-720.webp","w":675}]},
+    {"id":"ce-04","name":"Black Midi Dress & Cream Cropped Cardigan Set","gender":"cewek","is_new":false,"is_featured":false,"original_price":249000,"promo_price":179000,"image":"assets/products/ce-04-400.webp","image_position":"center","product_url":null,"image_is_illustration":false,"image_sources":[{"src":"assets/products/ce-04-400.webp","w":400},{"src":"assets/products/ce-04-720.webp","w":720}]},
+    {"id":"ce-05","name":"Blush Floral Ruffle Dress & Crochet Bolero Set","gender":"cewek","is_new":false,"is_featured":false,"original_price":259000,"promo_price":185000,"image":"assets/products/ce-05-400.webp","image_position":"center","product_url":null,"image_is_illustration":false,"image_sources":[{"src":"assets/products/ce-05-400.webp","w":400},{"src":"assets/products/ce-05-720.webp","w":697}]},
+    {"id":"cw-03","name":"Cream Zip-Up Collar Jacket","gender":"cowok","is_new":false,"is_featured":false,"original_price":299000,"promo_price":219000,"image":"assets/products/cw-03-400.webp","image_position":"center","product_url":null,"image_sources":[{"src":"assets/products/cw-03-400.webp","w":400},{"src":"assets/products/cw-03-720.webp","w":720}],"image_is_illustration":false,"price_source":"proposal","added":"2026-11-25"},
+    {"id":"cw-04","name":"Black Side-Stripe Track Set","gender":"cowok","is_new":false,"is_featured":false,"original_price":259000,"promo_price":189000,"image":"assets/products/cw-04-400.webp","image_position":"center","product_url":null,"image_sources":[{"src":"assets/products/cw-04-400.webp","w":400},{"src":"assets/products/cw-04-720.webp","w":474}],"image_is_illustration":false,"price_source":"proposal","added":"2026-11-25"},
+    {"id":"cw-05","name":"Cream Casual Jacket & White Tee Look","gender":"cowok","is_new":false,"is_featured":false,"original_price":319000,"promo_price":229000,"image":"assets/products/cw-05-400.webp","image_position":"center","product_url":null,"image_sources":[{"src":"assets/products/cw-05-400.webp","w":400},{"src":"assets/products/cw-05-720.webp","w":720}],"image_is_illustration":false,"price_source":"proposal","added":"2026-11-25"},
+    {"id":"cw-06","name":"Brown Button-Up Shirt & White Tee Layer","gender":"cowok","is_new":false,"is_featured":false,"original_price":219000,"promo_price":159000,"image":"assets/products/cw-06-400.webp","image_position":"center","product_url":null,"image_sources":[{"src":"assets/products/cw-06-400.webp","w":400},{"src":"assets/products/cw-06-720.webp","w":720}],"image_is_illustration":false,"price_source":"proposal","added":"2026-11-25"},
+    {"id":"cw-07","name":"Black & White Varsity Jacket","gender":"cowok","is_new":false,"is_featured":false,"original_price":329000,"promo_price":239000,"image":"assets/products/cw-07-400.webp","image_position":"center","product_url":null,"image_sources":[{"src":"assets/products/cw-07-400.webp","w":400},{"src":"assets/products/cw-07-720.webp","w":474}],"image_is_illustration":false,"price_source":"proposal","added":"2026-11-25"},
+    {"id":"cw-08","name":"White-to-Navy Gradient Hooded Jacket","gender":"cowok","is_new":false,"is_featured":false,"original_price":289000,"promo_price":209000,"image":"assets/products/cw-08-400.webp","image_position":"center","product_url":null,"image_sources":[{"src":"assets/products/cw-08-400.webp","w":400},{"src":"assets/products/cw-08-720.webp","w":720}],"image_is_illustration":false,"price_source":"proposal","added":"2026-11-25"},
+    {"id":"ce-06","name":"Pink Printed Lounge Set","gender":"cewek","is_new":false,"is_featured":false,"original_price":199000,"promo_price":149000,"image":"assets/products/ce-06-400.webp","image_position":"center","product_url":null,"image_sources":[{"src":"assets/products/ce-06-400.webp","w":400},{"src":"assets/products/ce-06-720.webp","w":720}],"image_is_illustration":false,"price_source":"proposal","added":"2026-11-25"},
+    {"id":"ce-07","name":"Cream & Pink Fluffy Cardigan Set","gender":"cewek","is_new":false,"is_featured":false,"original_price":239000,"promo_price":175000,"image":"assets/products/ce-07-400.webp","image_position":"center","product_url":null,"image_sources":[{"src":"assets/products/ce-07-400.webp","w":400},{"src":"assets/products/ce-07-720.webp","w":720}],"image_is_illustration":false,"price_source":"proposal","added":"2026-11-25"}
+  ]
+}
