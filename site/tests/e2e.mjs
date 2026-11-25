@@ -110,8 +110,65 @@ try {
   assert.ok(afterFilter.buyHref.startsWith('https://shop-id.tokopedia.com/'));
   record('Category filtering updates rack, count, panel, and buy URL', 'PASS', `${afterFilter.name} (${afterFilter.counter})`);
 
-  // 1d. Prev / Next / Keyboard navigation
-  const firstName = afterFilter.name;
+  // 1d. Prev / Next / Keyboard navigation + regression: 2D overlay never covers live WebGL canvas across all 15 slots
+  await page.click('[data-orbit-filter="all"]');
+  await page.waitForTimeout(150);
+  for (let step = 0; step < 15; step++) {
+    await page.click('[data-orbit-next]');
+    await page.waitForTimeout(55);
+    const rackVis = await page.evaluate(() => {
+      const vis = document.querySelector('[data-scene]');
+      const photo = document.querySelector('[data-orbit-photo]');
+      const canvas = document.querySelector('.stage__canvas');
+      const cp = getComputedStyle(photo);
+      const cc = getComputedStyle(canvas);
+      return {
+        state: vis?.dataset.sceneState,
+        photoHidden: photo?.hidden,
+        photoDisplay: cp.display,
+        canvasOpacity: cc.opacity,
+        canvasWidth: canvas?.getBoundingClientRect().width || 0,
+      };
+    });
+    assert.equal(rackVis.state, 'live', `slot step ${step} keeps sceneState=live`);
+    assert.equal(rackVis.photoHidden, true, `slot step ${step} keeps 2D stage__photo hidden`);
+    assert.equal(rackVis.photoDisplay, 'none', `slot step ${step} hides 2D stage__photo overlay in CSS`);
+    assert.equal(rackVis.canvasOpacity, '1', `slot step ${step} keeps 3D canvas visible`);
+    assert.ok(rackVis.canvasWidth > 300);
+  }
+
+  // Test 3D canvas drag (>8px threshold) vs side-card tap picking
+  const beforeDrag = await page.textContent('[data-orbit-counter]');
+  const cBox = await page.locator('.stage__canvas').boundingBox();
+  const cx = cBox.x + cBox.width * 0.5;
+  const cy = cBox.y + cBox.height * 0.5;
+  // Micro-jitter (<8px) without hitting left/right edge must not rotate rack via drag
+  await page.mouse.move(cx, cBox.y + 20);
+  await page.mouse.down();
+  await page.mouse.move(cx + 4, cBox.y + 20);
+  await page.mouse.up();
+  await page.waitForTimeout(100);
+  assert.equal(await page.textContent('[data-orbit-counter]'), beforeDrag, 'jitter <=8px does not drag-rotate');
+
+  // Deliberate horizontal drag (>8px) rotates rack cleanly while keeping 2D overlay hidden
+  await page.mouse.move(cx, cy);
+  await page.mouse.down();
+  await page.mouse.move(cx - 140, cy, { steps: 8 });
+  await page.mouse.up();
+  await page.waitForTimeout(150);
+  const afterDrag = await page.textContent('[data-orbit-counter]');
+  assert.notEqual(afterDrag, beforeDrag, 'horizontal drag >8px rotates rack');
+  assert.equal(await page.evaluate(() => getComputedStyle(document.querySelector('[data-orbit-photo]')).display), 'none');
+
+  // Tapping right neighbor card directly on 3D canvas switches active product
+  await page.mouse.click(cBox.x + cBox.width * 0.72, cy);
+  await page.waitForTimeout(180);
+  const afterTap = await page.textContent('[data-orbit-counter]');
+  assert.notEqual(afterTap, afterDrag, 'tapping neighbor card in 3D canvas selects it');
+
+  await page.click('[data-orbit-filter="cowok"]');
+  await page.waitForTimeout(120);
+  const firstName = (await page.textContent('[data-orbit-name]'))?.trim();
   await page.click('[data-orbit-next]');
   await page.waitForTimeout(120);
   const nextName = await page.textContent('[data-orbit-name]');
@@ -121,7 +178,7 @@ try {
   await page.waitForTimeout(120);
   const prevName = await page.textContent('[data-orbit-name]');
   assert.equal(prevName?.trim(), firstName);
-  record('Product selector next button & ArrowLeft keyboard sync', 'PASS');
+  record('All 15 WebGL slots, drag >8px, side-card tap & keyboard sync pass cleanly', 'PASS');
 
   // 1e. Extensible Product Detail Modal + Escape focus restore + Rack sync
   const detailTrigger = page.locator('[data-grid="new"] [data-product-detail]').first();
@@ -256,8 +313,18 @@ try {
   assert.equal(offState.state, 'poster');
   assert.equal(offState.posterVisible, true);
   assert.ok(offState.buyHref.startsWith('https://shop-id.tokopedia.com/'));
+  await offPage.click('[data-orbit-next]');
+  await offPage.waitForTimeout(100);
+  const offAfterPick = await offPage.evaluate(() => ({
+    state: document.querySelector('[data-scene]')?.dataset.sceneState,
+    photoHidden: document.querySelector('[data-orbit-photo]')?.hidden,
+    photoDisplay: getComputedStyle(document.querySelector('[data-orbit-photo]')).display,
+  }));
+  assert.equal(offAfterPick.state, 'photo');
+  assert.equal(offAfterPick.photoHidden, false);
+  assert.notEqual(offAfterPick.photoDisplay, 'none');
   await offCtx.close();
-  record('Poster fallback preserves full 2D catalog & purchasing without WebGL', 'PASS');
+  record('Poster fallback preserves full 2D catalog, photo pick mode & purchasing without WebGL', 'PASS');
 
   writeFileSync(join(REPORT_DIR, 'e2e-report.json'), JSON.stringify({ timestamp: new Date().toISOString(), results: e2eResults }, null, 2));
 } finally {

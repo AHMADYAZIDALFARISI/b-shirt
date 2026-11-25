@@ -40,6 +40,14 @@ test('picking prefers the card nearest the camera', () => {
   assert.equal(pickCard(cards, 110, 100), 0);
   assert.equal(pickCard(cards, 155, 100), 1);
   assert.equal(pickCard(cards, 400, 400), -1);
+
+  // Projected camera-space depth (-clipW): nearer front card (-2.3) beats neighbor (-3.1)
+  const projected = [
+    { index: 2, x: 320, y: 210, w: 120, h: 160, depth: -2.3 },
+    { index: 3, x: 390, y: 210, w: 105, h: 140, depth: -3.1 },
+  ];
+  assert.equal(pickCard(projected, 370, 210), 2);
+  assert.equal(pickCard(projected, 420, 210), 3);
 });
 
 test('cover crop keeps 3:4 and honours image_position', () => {

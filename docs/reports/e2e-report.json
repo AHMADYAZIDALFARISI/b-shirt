@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-25T06:57:46.830Z",
+  "timestamp": "2026-11-25T08:08:09.104Z",
   "results": [
     {
       "test": "Landing page catalog & section integrity",
@@ -17,7 +17,7 @@
       "details": "Korean Camel Oversized Coat & Turtleneck Look (1 / 8)"
     },
     {
-      "test": "Product selector next button & ArrowLeft keyboard sync",
+      "test": "All 15 WebGL slots, drag >8px, side-card tap & keyboard sync pass cleanly",
       "status": "PASS",
       "details": ""
     },
@@ -57,7 +57,7 @@
       "details": ""
     },
     {
-      "test": "Poster fallback preserves full 2D catalog & purchasing without WebGL",
+      "test": "Poster fallback preserves full 2D catalog, photo pick mode & purchasing without WebGL",
       "status": "PASS",
       "details": ""
     }

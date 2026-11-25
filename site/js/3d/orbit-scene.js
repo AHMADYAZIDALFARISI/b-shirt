@@ -560,12 +560,13 @@ export function mountOrbit(canvas, { colors = {}, dpr = 1.5, animate = true, qua
     gl.uniform3fv(loc.bg.uToneC, curTone.c);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
-    // Camera matrices
+    // Camera matrices (aspect-safe pullback prevents near-plane clipping on portrait containers)
     const aspect = canvas.width / Math.max(1, canvas.height);
-    const fov = aspect < 1 ? 0.80 : 0.68;
+    const safeAspect = Math.max(0.5, aspect);
+    const fov = safeAspect < 1 ? 0.82 : 0.68;
     const eyeX = pointer[0] * 0.22;
     const eyeY = 0.44 + pointer[1] * 0.14;
-    const eyeZ = aspect < 1 ? 4.95 : 4.28;
+    const eyeZ = safeAspect < 1 ? Math.max(4.95, 4.35 / safeAspect) : 4.28;
     const eye = [eyeX, eyeY, eyeZ];
     const proj = perspective(fov, aspect, 0.2, 24);
     const view = lookAt(eye, [0, -0.02, 0], [0, 1, 0]);
@@ -709,7 +710,16 @@ export function mountOrbit(canvas, { colors = {}, dpr = 1.5, animate = true, qua
             if (py > maxY) maxY = py;
             if (pz < minZ) minZ = pz;
           }
-          projected.push({ index: c.i, x: minX, y: minY, w: maxX - minX, h: maxY - minY, z: minZ });
+          const boxW = maxX - minX;
+          const boxH = maxY - minY;
+          projected.push({
+            index: c.i,
+            x: minX + boxW * 0.5,
+            y: minY + boxH * 0.5,
+            w: boxW,
+            h: boxH,
+            depth: -minZ,
+          });
         }
       }
       lastBoxes = projected;
@@ -738,6 +748,7 @@ export function mountOrbit(canvas, { colors = {}, dpr = 1.5, animate = true, qua
   }
 
   // Pointer & Wheel & Keyboard interactions
+  const DRAG_THRESHOLD_PX = 8;
   let dragging = false;
   let dragStartX = 0, dragStartY = 0;
   let lastX = 0;
@@ -770,12 +781,17 @@ export function mountOrbit(canvas, { colors = {}, dpr = 1.5, animate = true, qua
       return;
     }
 
+    if (!dragMoved) {
+      if (Math.hypot(e.clientX - dragStartX, e.clientY - dragStartY) <= DRAG_THRESHOLD_PX) return;
+      dragMoved = true;
+      lastX = e.clientX;
+      canvas.style.cursor = 'grabbing';
+      return;
+    }
+
     const dx = e.clientX - lastX;
     lastX = e.clientX;
-    if (Math.hypot(e.clientX - dragStartX, e.clientY - dragStartY) > 6) {
-      dragMoved = true;
-    }
-    if (dragMoved && items.length > 0) {
+    if (items.length > 0) {
       const delta = (dx / Math.max(180, cw)) * 3.1;
       ring = wrapAngle(ring + delta);
       velRing = delta;
@@ -793,9 +809,11 @@ export function mountOrbit(canvas, { colors = {}, dpr = 1.5, animate = true, qua
     dragging = false;
     try { canvas.releasePointerCapture(e.pointerId); } catch {}
     activePointerId = null;
+    canvas.style.cursor = 'grab';
+    if (e.pointerType === 'touch') pointerTarget = [0, 0];
     if (!items.length) return;
 
-    if (!dragMoved) {
+    if (!dragMoved && e.type !== 'pointercancel') {
       const rect = canvas.getBoundingClientRect();
       const hit = pickCard(lastBoxes, e.clientX - rect.left, e.clientY - rect.top);
       if (hit >= 0) {
@@ -930,6 +948,9 @@ export function mountOrbit(canvas, { colors = {}, dpr = 1.5, animate = true, qua
         }
         order.forEach((idx) => loadTex(items[idx].src));
       }
+      velRing = 0;
+      dragging = false;
+      activePointerId = null;
       ring = targetRing = items.length ? ringTargetFor(selected, items.length, 0) : 0;
       dirtyStill = true;
       renderNow(performance.now());
@@ -938,6 +959,7 @@ export function mountOrbit(canvas, { colors = {}, dpr = 1.5, animate = true, qua
     select(i) {
       if (!items.length) return;
       selected = Math.max(0, Math.min(i, items.length - 1));
+      velRing = 0;
       targetRing = ringTargetFor(selected, items.length, ring);
       if (motion) ensureRunning();
       else {

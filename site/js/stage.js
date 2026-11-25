@@ -108,7 +108,16 @@ export function initStage(config, allProducts, root = document) {
     for (const card of document.querySelectorAll('.card')) {
       card.classList.toggle('card--active', card.dataset.productId === v.id);
     }
-    if (userPicked) { photo.hidden = false; box.dataset.picked = 'true'; }
+    if (userPicked) {
+      box.dataset.picked = 'true';
+      const isWebglLive = Boolean(orbit) || box.dataset.sceneState === 'live';
+      if (isWebglLive) {
+        photo.hidden = true;
+      } else {
+        photo.hidden = false;
+        if (box.dataset.sceneState === 'poster') box.dataset.sceneState = 'photo';
+      }
+    }
     if (announce) live.textContent = `${v.name}, ${v.priceNow}. ${v.counter}`;
   }
 
@@ -116,7 +125,7 @@ export function initStage(config, allProducts, root = document) {
     index = stepIndex(i, 0, list.length);
     userPicked = true;
     render({ announce });
-    orbit?.select(index);
+    if (source !== 'orbit' && source !== 'tap') orbit?.select(index);
     track('scene_interaction', { product_id: list[index].id, location: `rack-${source}` });
   }
 
@@ -203,7 +212,8 @@ export function initStage(config, allProducts, root = document) {
     if (orbit || loading) return;
     if (!probeWebGL()) {
       box.dataset.sceneMode = 'poster';
-      setState('poster');
+      setState(userPicked ? 'photo' : 'poster');
+      photo.hidden = !userPicked;
       track('scene_fallback', { location: 'webgl-unavailable' });
       return;
     }
@@ -225,18 +235,22 @@ export function initStage(config, allProducts, root = document) {
         onSelect: (i, source) => select(i, { source }),
         onLost: () => {
           orbit = null;
-          setState('poster');
+          setState(userPicked ? 'photo' : 'poster');
+          photo.hidden = !userPicked;
           track('scene_fallback', { location: 'webgl-context-lost' });
         },
       });
-      orbit?.setFilterTone?.(filter);
+      if (!orbit) throw new Error('WebGL context unavailable');
+      orbit.setFilterTone?.(filter);
       orbit.setItems(orbitItems(), index);
+      photo.hidden = true;
       setState('live');
       syncToggle();
       applyRunning();
     } catch (error) {
       console.warn('[b-shirt] 3D orbit unavailable, using 2D:', error?.message || error);
-      setState('poster');
+      setState(userPicked ? 'photo' : 'poster');
+      photo.hidden = !userPicked;
       track('scene_fallback', { location: 'runtime-error' });
     } finally {
       loading = false;
