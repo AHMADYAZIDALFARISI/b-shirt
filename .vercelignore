@@ -1,0 +1,20 @@
+docs/
+Baju Cewek/
+Baju Cowok/
+Model Cewek/
+Model Cowok/
+brand-source/
+product-intake/
+audit/
+/*.md
+.github/
+site/node_modules/
+site/dist/
+site/test-results/
+site/tests/
+site/tools/
+playwright-report/
+test-results/
+*.log
+.vercel/
+.env*
